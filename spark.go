@@ -30,7 +30,7 @@ func graph(vals []float32) string {
 
 	graph := make([]string, 0, len(vals))
 	// the last box doesn't look great on my mac :(
-	bars := []string{"__", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "}
+	bars := []string{"__", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "██ "}
 	scale := float32(len(bars)-1) / (max - min)
 	for _, v := range vals {
 		h := int(scale * float32(v-min))
