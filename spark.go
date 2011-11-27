@@ -8,7 +8,7 @@ package main
 import (
 	"bufio"
 	"flag"
-        "math"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -28,17 +28,16 @@ func graph(vals []float32) string {
 		}
 	}
 
-
-	graph := ""
+	graph := make([]string, 0, len(vals))
 	// the last box doesn't look great on my mac :(
-	bars := []string{"__", "▁ " , "▂ " , "▃ " , "▄ " , "▅ ", "▆ ", "▇" , "█ "}
+	bars := []string{"__", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "}
 	scale := float32(len(bars)-1) / (max - min)
 	for _, v := range vals {
 		h := int(scale * float32(v-min))
-		graph = graph + bars[h];
+		graph = append(graph, bars[h])
 	}
 
-	return graph
+	return strings.Join(graph, "")
 }
 
 func main() {
@@ -70,5 +69,5 @@ func main() {
 		}
 	}
 
-	os.Stdout.Write([]byte("|" +  graph(vals) + "|\n"))
+	os.Stdout.Write([]byte("|" + graph(vals) + "|\n"))
 }
