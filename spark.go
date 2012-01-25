@@ -49,8 +49,8 @@ func main() {
 	if flag.NArg() != 0 {
 		// scan from parameters
 		for _, s := range flag.Args() {
-			fl, _ := strconv.Atof32(s)
-			vals = append(vals, fl)
+			fl, _ := strconv.ParseFloat(s, 32)
+			vals = append(vals, float32(fl))
 		}
 	} else {
 		// scan from stdin
@@ -63,8 +63,8 @@ func main() {
 			fields := strings.Fields(s)
 
 			for _, f := range fields {
-				fl, _ := strconv.Atof32(f)
-				vals = append(vals, fl)
+				fl, _ := strconv.ParseFloat(f, 32)
+				vals = append(vals, float32(fl))
 			}
 		}
 	}
